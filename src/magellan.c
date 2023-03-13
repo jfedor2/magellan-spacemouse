@@ -15,11 +15,13 @@
 
 uint16_t trans_report[3];
 uint16_t rot_report[3];
-uint16_t buttons_report[1];
+uint8_t buttons_report[6];
 
 uint8_t trans_pending = 0;
 uint8_t rot_pending = 0;
 uint8_t buttons_pending = 0;
+
+uint8_t button_bits[] = { 12, 13, 14, 15, 22, 25, 23, 24, 0, 1, 2, 4, 5, 8, 26 };
 
 int main() {
     board_init();
@@ -55,7 +57,7 @@ int main() {
             rot_pending = 0;
         }
         if (buttons_pending && tud_hid_ready()) {
-            tud_hid_report(3, buttons_report, 2);
+            tud_hid_report(3, buttons_report, 6);
             buttons_pending = 0;
         }
 
@@ -106,9 +108,13 @@ int main() {
                         }
                         printf("%04x\n", buttons);
 
-                        buttons_report[0] = 0;
-                        buttons_report[0] |= (buttons & 0x20) >> 5;
-                        buttons_report[0] |= (buttons & 0x40) >> 5;
+                        memset(buttons_report, 0, sizeof(buttons_report));
+
+                        for (int i = 0; i < 12; i++) {
+                            if (buttons & (1 << i)) {
+                                buttons_report[button_bits[i] / 8] |= 1 << (button_bits[i] % 8);
+                            }
+                        }
 
                         buttons_pending = 1;
                     }
