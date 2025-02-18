@@ -27,8 +27,8 @@
 #include <tusb.h>
 
 // 3Dconnexion SpaceMouse Pro
-#define USB_VID 0x046D
-#define USB_PID 0xC62B
+#define USB_VID 0x256F
+#define USB_PID 0xC631
 
 // SpaceMouse Pro
 const uint8_t report_descriptor[] = {
@@ -229,8 +229,8 @@ uint8_t const desc_configuration[] = {
 
 char const* string_desc_arr[] = {
     (const char[]){ 0x09, 0x04 },  // 0: is supported language is English (0x0409)
-    "Fake",                        // 1: Manufacturer
-    "SpaceMouse Pro",              // 2: Product
+    "3Dconnexion",                        // 1: Manufacturer
+    "Spacemouse Pro Wireless (cabled)",              // 2: Product
 };
 
 // Invoked when received GET DEVICE DESCRIPTOR
