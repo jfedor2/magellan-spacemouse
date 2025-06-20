@@ -229,7 +229,7 @@ uint8_t const desc_configuration[] = {
 
 char const* string_desc_arr[] = {
     (const char[]){ 0x09, 0x04 },  // 0: is supported language is English (0x0409)
-    "Fake",                        // 1: Manufacturer
+    "3Dconnexion",                 // 1: Manufacturer
     "SpaceMouse Pro",              // 2: Product
 };
 
