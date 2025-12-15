@@ -4,7 +4,9 @@
 
 This project lets you use an old serial Magellan/SpaceMouse controller with modern software on modern operating systems. It simulates a 3DConnexion SpaceMouse Pro, so it can be used with software like Fusion 360, 3ds Max, SolidWorks, Inventor, Maya and many others. No special software is required on the computer, apart from 3DxWare. From the computer's point of view, your old Magellan will look like a real SpaceMouse Pro connected over USB.
 
-To make it work you will need:
+You can either use the [RP2040-RS232](https://github.com/jfedor2/rp2040-rs232) adapter or you can make one yourself as described below. If you use the RP2040-RS232 adapter, the multi-firmware that comes with it includes the Magellan/SpaceMouse firmware. You can also just use the one linked here.
+
+To make one yourself you will need:
 
 - Raspberry Pi Pico
 - [Pololu 23201a Serial Adapter](https://www.pololu.com/product/126)
